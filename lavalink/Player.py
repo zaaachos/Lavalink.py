@@ -5,8 +5,9 @@ from .AudioTrack import *
 
 
 class Player:
-    def __init__(self, bot, guild_id: int):
+    def __init__(self, bot, node, guild_id: int):
         self.bot = bot
+        self.node = None
         self.guild_id = str(guild_id)
         self.channel_id = None
         self._user_data = {}
