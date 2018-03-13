@@ -1,5 +1,4 @@
 class Utils:
-
     @staticmethod
     def format_time(time):
         """ Formats the given time into HH:MM:SS """

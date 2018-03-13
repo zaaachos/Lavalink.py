@@ -1,5 +1,6 @@
 import asyncio
 import logging
+
 import aiohttp
 
 from .PlayerManager import PlayerManager, DefaultPlayer
@@ -34,6 +35,14 @@ class Client:
         )
         self.players = PlayerManager(self, player=player)
 
+    @classmethod
+    def persistent(cls, bot, *args, **kwargs):
+        try:
+            return bot.lavalink
+        except AttributeError:
+            bot.lavalink = cls(bot, *args, **kwargs)
+            return bot.lavalink
+
     def register_hook(self, func):
         if func not in self.hooks:
             self.hooks.append(func)
@@ -42,7 +51,7 @@ class Client:
         if func in self.hooks:
             self.hooks.remove(func)
 
-    async def dispatch_event(self, event: str, guild_id: str, reason: str= ''):
+    async def dispatch_event(self, event: str, guild_id: str, reason: str = ''):
         player = self.players[int(guild_id)]
 
         if player:

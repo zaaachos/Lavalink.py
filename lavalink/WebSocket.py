@@ -1,7 +1,8 @@
 import asyncio
-import websockets
 import json
 import logging
+
+import websockets
 
 log = logging.getLogger(__name__)
 
@@ -118,7 +119,6 @@ class WebSocket:
         else:
             self._queue.append(data)
             log.debug('Send called before websocket ready; queueing payload\n\t', str(data))
-
 
     def destroy(self):
         self._shutdown = False

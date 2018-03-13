@@ -3,16 +3,15 @@ __author__ = 'Luke & William'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2018 Luke & William'
 __version__ = '2.1'
+__modified__ = "By: Andraž Korenč"
+import sys
 
 from .AudioTrack import *
 from .Client import *
+from .Events import *
 from .PlayerManager import *
 from .Utils import *
 from .WebSocket import *
-from .Events import *
-
-import logging
-import sys
 
 log = logging.getLogger(__name__)
 
