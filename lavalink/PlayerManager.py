@@ -98,6 +98,7 @@ class DefaultPlayer(BasePlayer):
         """ Plays the first track in the queue, if any """
         if self.repeat and self.current is not None:
             self.queue.append(self.current)
+
         self.previous = self.current
         self.current = None
         self.position = 0
@@ -113,6 +114,8 @@ class DefaultPlayer(BasePlayer):
                 track = self.queue.pop(0)
 
             self.current = track
+            if not self.previous:
+                self.previous = self.current
             await self._lavalink.ws.send(op='play', guildId=self.guild_id, track=track.track)
             await self._lavalink.dispatch_event('TrackStartEvent', self.guild_id)
 
