@@ -21,5 +21,5 @@ setup(
     download_url='https://github.com/Devoxin/Lavalink.py/archive/{}.tar.gz'.format(version),
     keywords=['lavalink'],
     include_package_data=True,
-    install_requires=['websockets>=5.0.1,<7.1.0', 'aiohttp']
+    install_requires=['websockets>=5.0.1,<8.2.0', 'aiohttp']
 )
